@@ -89,9 +89,9 @@ a {
 
 .section-divider {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   height: 26px;
   border: 0;
   background: transparent;
