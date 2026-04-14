@@ -75,6 +75,86 @@ a {
   padding-top: 4.4rem;
 }
 
+.portfolio-card {
+  position: relative;
+  isolation: isolate;
+  transform-origin: center;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.portfolio-card::before,
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+
+.portfolio-card::before {
+  inset: -1px;
+  padding: 1px;
+  background: linear-gradient(115deg, rgba(255, 217, 174, 0.95), rgba(112, 200, 255, 0.9), rgba(255, 217, 174, 0.95));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.portfolio-card::after {
+  inset: -10px;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 211, 156, 0.45), transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(104, 178, 255, 0.35), transparent 48%);
+  filter: blur(14px);
+}
+
+.portfolio-card:hover,
+.portfolio-card:focus-within {
+  transform: translateY(-3px);
+  animation: card-wiggle 0.7s ease-in-out;
+}
+
+.portfolio-card:hover::before,
+.portfolio-card:hover::after,
+.portfolio-card:focus-within::before,
+.portfolio-card:focus-within::after {
+  opacity: 1;
+}
+
+@keyframes card-wiggle {
+  0% {
+    transform: translateY(-3px) rotate(0deg);
+  }
+
+  20% {
+    transform: translateY(-3px) rotate(-0.9deg);
+  }
+
+  45% {
+    transform: translateY(-3px) rotate(0.8deg);
+  }
+
+  70% {
+    transform: translateY(-3px) rotate(-0.55deg);
+  }
+
+  100% {
+    transform: translateY(-3px) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-card {
+    transition: none;
+  }
+
+  .portfolio-card:hover,
+  .portfolio-card:focus-within {
+    animation: none;
+  }
+}
+
 @media (max-width: 700px) {
   .section-shell {
     padding-top: 3.3rem;

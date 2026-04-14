@@ -60,17 +60,18 @@ export function ProjectsSection() {
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((item, index) => (
-            <motion.article
+            <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="rounded-2xl border border-white/20 bg-[rgba(9,14,25,0.56)] p-5"
             >
-              <p className="text-lg font-semibold text-white">{item.title}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#f8d9ae]">{item.track}</p>
-            </motion.article>
+              <Card className="h-full border-white/20 bg-[rgba(9,14,25,0.56)] p-5">
+                <p className="text-lg font-semibold text-white">{item.title}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#f8d9ae]">{item.track}</p>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </section>

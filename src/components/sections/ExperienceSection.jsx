@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { experiences } from "../../data/portfolio";
+import { Card } from "../ui/card";
 
 export function ExperienceSection() {
   return (
@@ -20,15 +21,16 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: index * 0.08 }}
-            className="rounded-2xl border border-white/20 bg-[rgba(8,13,24,0.58)] p-5"
           >
-            <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
-            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#f6ca92]">{item.org} · {item.date}</p>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-[#d5deee] marker:text-[#f6ca92]">
-              {item.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
+            <Card className="h-full border-white/20 bg-[rgba(8,13,24,0.58)] p-5">
+              <h3 className="text-2xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#f6ca92]">{item.org} · {item.date}</p>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-[#d5deee] marker:text-[#f6ca92]">
+                {item.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </Card>
           </motion.div>
         ))}
         </div>

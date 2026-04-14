@@ -29,22 +29,23 @@ export function SkillsSection() {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
-            <motion.article
+            <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: index * 0.07 }}
-              className="rounded-2xl border border-white/20 bg-[rgba(9,15,27,0.52)] p-5 backdrop-blur"
             >
-              <h3 className="mb-2 text-xl font-semibold text-white">{service.title}</h3>
-              <p className="text-sm text-[#d8e2fa]">{service.description}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <Badge key={tag}>{tag}</Badge>
-                ))}
-              </div>
-            </motion.article>
+              <Card className="h-full border-white/20 bg-[rgba(9,15,27,0.52)] p-5 backdrop-blur">
+                <h3 className="mb-2 text-xl font-semibold text-white">{service.title}</h3>
+                <p className="text-sm text-[#d8e2fa]">{service.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <Badge key={tag}>{tag}</Badge>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </section>
