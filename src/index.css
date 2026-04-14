@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,17 +24,49 @@ html {
 }
 
 body {
-  background: radial-gradient(circle at 10% 5%, #1d3252 0%, transparent 40%),
-    radial-gradient(circle at 85% 15%, #264f5e 0%, transparent 35%),
-    linear-gradient(165deg, #0f1726, #111b2e);
+  background: radial-gradient(circle at 10% 5%, rgba(255, 191, 126, 0.25) 0%, transparent 34%),
+    radial-gradient(circle at 85% 15%, rgba(104, 178, 255, 0.22) 0%, transparent 38%),
+    linear-gradient(170deg, #080d18, #0d1628);
   color: #e9eef7;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Outfit", sans-serif;
   line-height: 1.55;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Syne", sans-serif;
+  letter-spacing: -0.01em;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.65rem 0;
+  color: rgba(255, 220, 180, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  animation: ticker-shift 20s linear infinite;
+}
+
+@keyframes ticker-shift {
+  from {
+    background-position: 0 0;
+    transform: translateX(0);
+  }
+
+  to {
+    background-position: 100% 0;
+    transform: translateX(-20px);
+  }
 }
 
 .section-shell {

@@ -1,14 +1,53 @@
 export const profile = {
   name: "Srivathsan Raja",
   role: "Software Developer & Data Analyst",
-  headline: "Building Practical Software and Insight-Driven Workflows.",
+  headline: "Building Practical Software and Insight-Driven Workflows",
   summary:
-    "Final-year computer science student focused on data analysis and software development, using Python, SQL, and FastAPI to build real-world automation solutions.",
+    "Final-year computer science student focused on software development and data analysis, building automation tools and analytics workflows using Python, FastAPI, SQL, and Power BI.",
   phone: "+91 99940 58686",
   email: "srivathsan.r20003@gmail.com",
   linkedin: "https://www.linkedin.com/in/srivathsan-raja/",
   github: "https://github.com/JINM0RI"
 };
+
+export const heroStats = [
+  { label: "Projects", value: "3+" },
+  { label: "Core Technologies", value: "12+" },
+  { label: "Certifications", value: "7" }
+];
+
+export const services = [
+  {
+    title: "Backend & API Development",
+    description:
+      "Designing robust backend services with clean API architecture, async processing, and production-friendly structure.",
+    tags: ["Python", "FastAPI", "SQLite/MySQL"]
+  },
+  {
+    title: "Automation Solutions",
+    description:
+      "Automating repetitive business workflows such as payroll, certificate generation, and reporting pipelines.",
+    tags: ["Python", "Excel Processing", "PDF Generation"]
+  },
+  {
+    title: "Data Analytics",
+    description:
+      "Transforming raw data into actionable insights using structured analysis and interactive dashboards.",
+    tags: ["Pandas", "NumPy", "Power BI"]
+  },
+  {
+    title: "Desktop Utility Apps",
+    description:
+      "Building lightweight desktop software for internal operations, billing, and workflow acceleration.",
+    tags: ["PyQt5", "SQLite", "Installer Packaging"]
+  },
+  {
+    title: "Deployment & Optimization",
+    description:
+      "Delivering deployment-ready builds with maintainable code structure, error handling, and performance-minded implementation.",
+    tags: ["Git", "Version Control", "Maintainability"]
+  }
+];
 
 export const skillGroups = [
   {
@@ -98,5 +137,48 @@ export const experiences = [
       "Coordinated marketing across five-plus departments while leading a seven-member cross-functional team.",
       "Executed campaign and polling strategies that increased engagement by 25% across social channels and events."
     ]
+  }
+];
+
+export const certifications = [
+  { title: "Google Data Analytics", track: "Analytics" },
+  { title: "Data Science Methods and Algorithms", track: "Data Science" },
+  { title: "Python Programming", track: "Development" },
+  { title: "SQL for Data Analysis", track: "Database" },
+  { title: "Power BI Essentials", track: "Visualization" },
+  { title: "FastAPI Foundations", track: "Backend" },
+  { title: "Git & GitHub Workflow", track: "Tools" }
+];
+
+export const processSteps = [
+  {
+    step: "01",
+    title: "Discover",
+    text: "Understand the business problem, current workflow, and where delays or errors are happening."
+  },
+  {
+    step: "02",
+    title: "Plan",
+    text: "Define the data model, tool stack, and phased implementation plan with clear outcomes."
+  },
+  {
+    step: "03",
+    title: "Build",
+    text: "Develop the core system with modular code, validation checks, and maintainable architecture."
+  },
+  {
+    step: "04",
+    title: "Integrate",
+    text: "Connect uploads, databases, reports, and output formats into one consistent workflow."
+  },
+  {
+    step: "05",
+    title: "Validate",
+    text: "Test with real scenarios and edge cases to ensure accuracy, speed, and reliability."
+  },
+  {
+    step: "06",
+    title: "Deliver",
+    text: "Deploy a usable solution and document usage so teams can adopt it quickly."
   }
 ];

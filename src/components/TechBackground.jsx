@@ -1,91 +1,174 @@
 import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 export function TechBackground() {
-  const canvasRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const ctx = canvas.getContext("2d");
-    let frameId = 0;
-    const particleCount = 55;
-    const particles = [];
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 8.5, 14);
+    camera.lookAt(0, -1.6, -5);
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.domElement.className = "h-full w-full";
+    container.appendChild(renderer.domElement);
 
-    const seedParticles = () => {
-      particles.length = 0;
-      for (let i = 0; i < particleCount; i += 1) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          size: Math.random() * 1.9 + 0.7
-        });
-      }
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = 0; i < particles.length; i += 1) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(49, 208, 170, 0.45)";
-        ctx.fill();
-      }
-
-      for (let i = 0; i < particles.length; i += 1) {
-        for (let j = i + 1; j < particles.length; j += 1) {
-          const p1 = particles[i];
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            const alpha = 0.13 - dist / 1000;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(243, 186, 47, ${Math.max(alpha, 0.02)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
+    const skyGeo = new THREE.SphereGeometry(110, 32, 32);
+    const skyMat = new THREE.ShaderMaterial({
+      uniforms: {
+        topColor: { value: new THREE.Color(0x1c2d49) },
+        bottomColor: { value: new THREE.Color(0x0a111f) }
+      },
+      vertexShader: `
+        varying vec3 vWorldPosition;
+        void main() {
+          vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+          vWorldPosition = worldPosition.xyz;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
-      }
+      `,
+      fragmentShader: `
+        uniform vec3 topColor;
+        uniform vec3 bottomColor;
+        varying vec3 vWorldPosition;
+        void main() {
+          float h = normalize(vWorldPosition).y;
+          gl_FragColor = vec4(mix(bottomColor, topColor, max(h, 0.0)), 1.0);
+        }
+      `,
+      side: THREE.BackSide
+    });
 
-      frameId = requestAnimationFrame(draw);
+    const sky = new THREE.Mesh(skyGeo, skyMat);
+    scene.add(sky);
+
+    const ambient = new THREE.AmbientLight(0x88a4d4, 0.4);
+    scene.add(ambient);
+
+    const key = new THREE.DirectionalLight(0xa6d0ff, 0.8);
+    key.position.set(10, 16, 6);
+    scene.add(key);
+
+    const fill = new THREE.DirectionalLight(0xffc08f, 0.45);
+    fill.position.set(-12, 6, -8);
+    scene.add(fill);
+
+    const terrainGeo = new THREE.PlaneGeometry(34, 24, 140, 100);
+    terrainGeo.rotateX(-Math.PI / 2.55);
+
+    const basePositions = Float32Array.from(terrainGeo.attributes.position.array);
+
+    const terrainMat = new THREE.MeshStandardMaterial({
+      color: 0x4c8ec4,
+      emissive: 0x10345a,
+      emissiveIntensity: 0.35,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.62
+    });
+
+    const terrain = new THREE.Mesh(terrainGeo, terrainMat);
+    terrain.position.set(0, -3, -10);
+    scene.add(terrain);
+
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x8cc8ff,
+      transparent: true,
+      opacity: 0.12,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      wireframe: true
+    });
+    const glow = new THREE.Mesh(terrainGeo.clone(), glowMat);
+    glow.position.copy(terrain.position);
+    glow.position.y += 0.05;
+    scene.add(glow);
+
+    let scrollY = window.scrollY;
+    const terrainTravel = () => Math.max(window.innerHeight * 2.4, 1);
+
+    const onScroll = () => {
+      scrollY = window.scrollY;
     };
-
-    resize();
-    seedParticles();
-    draw();
 
     const onResize = () => {
-      resize();
-      seedParticles();
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    let frameId = 0;
+    const animate = (time) => {
+      frameId = requestAnimationFrame(animate);
+
+      const positions = terrainGeo.attributes.position.array;
+      const glowPositions = glow.geometry.attributes.position.array;
+      const t = Math.min(scrollY / terrainTravel(), 1);
+
+      for (let i = 0; i < positions.length; i += 3) {
+        const x = basePositions[i];
+        const z = basePositions[i + 2];
+
+        const waveA = Math.sin(x * 0.27 + time * 0.00055 + z * 0.18) * 0.75;
+        const waveB = Math.cos(z * 0.42 - time * 0.00042 + x * 0.11) * 0.48;
+        const ridge = Math.sin((x + z) * 0.17 + time * 0.00033) * 0.35;
+        const lift = t * 0.45;
+
+        const y = waveA + waveB + ridge + lift;
+        positions[i + 1] = y;
+        glowPositions[i + 1] = y + 0.12;
+      }
+
+      terrainGeo.attributes.position.needsUpdate = true;
+      glow.geometry.attributes.position.needsUpdate = true;
+      terrainGeo.computeVertexNormals();
+
+      sky.material.uniforms.topColor.value.lerpColors(new THREE.Color(0x1c2d49), new THREE.Color(0x5f87b6), t);
+      sky.material.uniforms.bottomColor.value.lerpColors(new THREE.Color(0x0a111f), new THREE.Color(0x15243b), t);
+
+      terrain.material.emissiveIntensity = 0.28 + t * 0.25;
+      terrain.material.opacity = 0.55 + t * 0.15;
+      glow.material.opacity = 0.1 + t * 0.12;
+
+      terrain.rotation.z = Math.sin(time * 0.00012) * 0.045;
+      glow.rotation.z = terrain.rotation.z;
+
+      renderer.render(scene, camera);
+    };
+
+    animate(0);
 
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
+
+      scene.traverse((object) => {
+        if (object.geometry) object.geometry.dispose();
+        if (object.material) {
+          if (Array.isArray(object.material)) {
+            object.material.forEach((material) => material.dispose());
+          } else {
+            object.material.dispose();
+          }
+        }
+      });
+
+      renderer.dispose();
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="fixed inset-0 -z-10 h-full w-full opacity-35" />;
+  return <div ref={containerRef} aria-hidden="true" className="fixed inset-0 -z-10 h-full w-full opacity-65" />;
 }
