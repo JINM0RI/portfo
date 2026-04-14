@@ -75,6 +75,13 @@ a {
   padding-top: 4.4rem;
 }
 
+.hero-summary {
+  color: #d4dbe8;
+  opacity: 1;
+  text-shadow: none;
+  mix-blend-mode: normal;
+}
+
 .portfolio-card {
   position: relative;
   isolation: isolate;

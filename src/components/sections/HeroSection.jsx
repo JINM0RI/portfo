@@ -36,7 +36,7 @@ export function HeroSection() {
           {profile.role}
           <span className="mt-2 block text-[0.42em] font-medium uppercase tracking-[0.22em] text-[#f7ddbd]">{profile.headline}</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#d4dbe8] sm:text-lg">
+        <p className="hero-summary mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
           {profile.summary}
         </p>
 
