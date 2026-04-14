@@ -1,178 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Srivathsan Raja | Software Developer & Data Analyst</title>
-  <meta name="description" content="Portfolio of Srivathsan Raja featuring billing, automation, certificate generation, and data analysis projects." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <canvas id="tech-bg" aria-hidden="true"></canvas>
-
-  <header class="hero" id="top">
-    <nav class="top-nav">
-      <a class="brand" href="#top">Portfolio</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
-
-    <div class="hero-content reveal-up">
-      <p class="eyebrow">Hi, I am Srivathsan Raja.</p>
-      <h1>Software Developer & Data Analyst | Building Practical Software and Insight-Driven Workflows.</h1>
-      <p class="subheadline">
-        Final-year computer science student focused on data analysis and software development, using Python, SQL, and FastAPI to build real-world automation solutions.
-      </p>
-      <div class="cta-group">
-        <a class="btn btn-ghost" href="#projects">Explore Projects</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="section skills" id="skills">
-      <div class="section-head reveal-up">
-        <p class="section-tag">Skills Matrix</p>
-        <h2>Tools Organized by What They Deliver</h2>
-      </div>
-
-      <div class="skill-grid">
-        <article class="skill-card reveal-up" style="--delay: 0ms;">
-          <h3>Development</h3>
-          <div class="skills-list stagger" data-stagger>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">FastAPI</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">HTML</span>
-            <span class="skill-pill">CSS</span>
-            <span class="skill-pill">PyQt5</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal-up" style="--delay: 80ms;">
-          <h3>Data Analysis</h3>
-          <div class="skills-list stagger" data-stagger>
-            <span class="skill-pill">Pandas</span>
-            <span class="skill-pill">NumPy</span>
-            <span class="skill-pill">SQL (MySQL)</span>
-            <span class="skill-pill">Power BI</span>
-            <span class="skill-pill">Jupyter</span>
-            <span class="skill-pill">MS Excel</span>
-            <span class="skill-pill">Matplotlib</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal-up" style="--delay: 160ms;">
-          <h3>Tools & Certifications</h3>
-          <div class="skills-list stagger" data-stagger>
-            <span class="skill-pill">Git</span>
-            <span class="skill-pill">GitHub</span>
-            <span class="skill-pill">VS Code</span>
-            <span class="skill-pill">Google Data Analytics</span>
-            <span class="skill-pill">Data Science Methods and Algorithms</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section projects" id="projects">
-      <div class="section-head reveal-up">
-        <p class="section-tag">Projects Showcase</p>
-        <h2>Proof Through Real System Outcomes</h2>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card reveal-up">
-          <h3>Billing System</h3>
-          <p><strong>The Problem:</strong> Store billing and inventory activities were difficult to manage manually, creating delays and mismatched records.</p>
-          <p><strong>The Solution:</strong> Built a desktop billing application with user login, admin dashboard, purchase management, and invoice generation using SQL-backed data tables.</p>
-          <p><strong>The Tech Stack:</strong> Python, PyQt5, SQL, SQLite</p>
-          <div class="project-links">
-            <a href="https://github.com/JINM0RI/Billing_System" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://github.com/JINM0RI/Billing_System" target="_blank" rel="noopener noreferrer">Source Code</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal-up">
-          <h3>Auto Certificate Generator</h3>
-          <p><strong>The Problem:</strong> Generating and sending personalized certificates for large participant lists was repetitive and error-prone.</p>
-          <p><strong>The Solution:</strong> Developed a FastAPI web app that uploads Excel participant data and templates, supports live name-position adjustments, bulk generates PDFs, and sends them automatically via email.</p>
-          <p><strong>The Tech Stack:</strong> Python, FastAPI, HTML, CSS, JavaScript, ReportLab, Pillow, SMTP</p>
-          <div class="project-links">
-            <a href="https://github.com/JINM0RI/auto-certificate-generator" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://github.com/JINM0RI/auto-certificate-generator" target="_blank" rel="noopener noreferrer">Source Code</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal-up">
-          <h3>TechVault</h3>
-          <p><strong>The Problem:</strong> Technical notes and cheat sheets often become scattered, making revision and reuse difficult.</p>
-          <p><strong>The Solution:</strong> Built an interactive knowledge vault with category-note-topic hierarchy, a block-based editor, cheat sheet integration, and Python code execution for hands-on learning.</p>
-          <p><strong>The Tech Stack:</strong> FastAPI, Next.js, TypeScript, SQLite, BlockNote</p>
-          <div class="project-links">
-            <a href="https://github.com/JINM0RI/techvault" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://github.com/JINM0RI/techvault" target="_blank" rel="noopener noreferrer">Source Code</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section experience" id="experience">
-      <div class="section-head reveal-up">
-        <p class="section-tag">Experience</p>
-        <h2>Action + Outcome Work History</h2>
-      </div>
-
-      <div class="timeline">
-        <article class="timeline-item reveal-up">
-          <h3>Freelance Software Developer</h3>
-          <p class="meta">Sacsita Granite | Jan 2026 - Feb 2026</p>
-          <ul>
-            <li>Built a FastAPI payroll automation system that reduced manual processing by 70% using asynchronous task handling and bulk PDF generation from Excel uploads.</li>
-            <li>Designed a standalone Windows installer to deliver zero-configuration deployment and remove all client-side dependency issues.</li>
-          </ul>
-        </article>
-
-        <article class="timeline-item reveal-up">
-          <h3>Data Analyst Intern</h3>
-          <p class="meta">SNOWFORCE Technologies | Aug 2025 - Sep 2025</p>
-          <ul>
-            <li>Used Pandas and NumPy to audit more than 1,000 rows of financial data and identify inconsistencies by isolating faulty input logic.</li>
-            <li>Designed an interactive Power BI dashboard to track sales and error rates, reducing manual reporting effort by 20% and enabling faster decisions.</li>
-            <li>Presented data quality findings that improved internal governance procedures and standardized report formats.</li>
-          </ul>
-        </article>
-
-        <article class="timeline-item reveal-up">
-          <h3>Marketing Head</h3>
-          <p class="meta">Intellects Club | Oct 2023 - Oct 2024</p>
-          <ul>
-            <li>Led digital outreach that increased student event attendance by 40%, with average turnout rising from 50 to over 70 participants per event.</li>
-            <li>Coordinated marketing across five-plus departments while leading a seven-member cross-functional team.</li>
-            <li>Executed campaign and polling strategies that increased engagement by 25% across social channels and events.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="section footer" id="contact">
-    <div class="footer-content reveal-up">
-      <h2>Ready to collaborate?</h2>
-      <p>Let us build smart software, automated workflows, and data-backed decisions together.</p>
-      <div class="contact-links">
-        <a href="mailto:srivathsan.r20003@gmail.com">srivathsan.r20003@gmail.com</a>
-        <a href="tel:+919994058686">+91 99940 58686</a>
-        <a href="https://www.linkedin.com/in/srivathsan-raja/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/JINM0RI" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Srivathsan Raja | Software Developer & Data Analyst</title>
+    <meta
+      name="description"
+      content="Portfolio of Srivathsan Raja featuring billing, automation, certificate generation, and data analysis projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
