@@ -4,8 +4,7 @@ export const profile = {
   headline: "Building Practical Software and Insight-Driven Workflows",
   summary:
     "Final-year computer science student focused on software development and data analysis, building automation tools and analytics workflows using Python, FastAPI, SQL, and Power BI.",
-  phone: "+91 99940 58686",
-  email: "srivathsan.r20003@gmail.com",
+  email: "srivathsan.r2003@gmail.com",
   linkedin: "https://www.linkedin.com/in/srivathsan-raja/",
   github: "https://github.com/JINM0RI"
 };

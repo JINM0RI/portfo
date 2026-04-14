@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "../../data/portfolio";
 
 export function ContactSection() {
@@ -22,13 +22,6 @@ export function ContactSection() {
           <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-accent hover:border-accent2 hover:text-accent2">
             <Mail size={16} />
             Email
-          </a>
-          <a
-            href={`tel:${profile.phone.replace(/\s+/g, "")}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-accent hover:border-accent2 hover:text-accent2"
-          >
-            <Phone size={16} />
-            Phone
           </a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-accent hover:border-accent2 hover:text-accent2">
             <Linkedin size={16} />

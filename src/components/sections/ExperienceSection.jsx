@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { experiences } from "../../data/portfolio";
+import { SectionDivider } from "../SectionDivider";
 import { Card } from "../ui/card";
 
 export function ExperienceSection() {
   return (
     <>
-      <div className="ticker mt-10">BUILD • BUILD • BUILD • BUILD • BUILD • BUILD • BUILD • BUILD •</div>
+      <SectionDivider className="mt-10" />
       <section id="experience" className="section-shell">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent2">Experience</p>
         <h2 className="mb-5 max-w-[15ch] text-3xl font-bold leading-tight text-white sm:text-5xl">Work and leadership journey</h2>

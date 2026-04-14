@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { certifications, projects } from "../../data/portfolio";
+import { SectionDivider } from "../SectionDivider";
 import { Card } from "../ui/card";
 
 export function ProjectsSection() {
@@ -49,7 +50,7 @@ export function ProjectsSection() {
         </div>
       </section>
 
-      <div className="ticker mt-10">CERTIFIED • CERTIFIED • CERTIFIED • CERTIFIED • CERTIFIED • CERTIFIED •</div>
+      <SectionDivider className="mt-10" />
 
       <section id="certifications" className="section-shell">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent2">Certificates</p>

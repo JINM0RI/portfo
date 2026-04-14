@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { services, skillGroups } from "../../data/portfolio";
+import { SectionDivider } from "../SectionDivider";
 import { Badge } from "../ui/badge";
 import { Card } from "../ui/card";
 
@@ -50,7 +51,7 @@ export function SkillsSection() {
         </div>
       </section>
 
-      <div className="ticker mt-10">CREATE • CREATE • CREATE • CREATE • CREATE • CREATE • CREATE • CREATE •</div>
+      <SectionDivider className="mt-10" />
 
       <section id="skills" className="section-shell">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent2">Skills & Tools</p>
@@ -89,7 +90,7 @@ export function SkillsSection() {
         </div>
       </section>
 
-      <div className="ticker mt-10">SKILLS • TOOLS • SKILLS • TOOLS • SKILLS • TOOLS • SKILLS • TOOLS •</div>
+      <SectionDivider className="mt-10" />
     </>
   );
 }
